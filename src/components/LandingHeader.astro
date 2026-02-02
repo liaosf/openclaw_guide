@@ -1,0 +1,82 @@
+---
+const links = [
+  { text: "关于", href: "#about" },
+  { text: "特性", href: "#features" },
+  { text: "学习路径", href: "#learning-path" },
+  { text: "精选技能", href: "#skills" },
+  { text: "资源", href: "#resources" },
+];
+---
+
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href="/" class="text-2xl font-bold text-indigo-600">OpenClaw 101</a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex space-x-8">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+          >
+            {link.text}
+          </a>
+        ))}
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="hidden md:flex items-center">
+        <a
+          href="/intro"
+          class="bg-indigo-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-indigo-700 transition-colors"
+        >
+          开始学习
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-btn" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50"
+        >
+          {link.text}
+        </a>
+      ))}
+      <a
+        href="/intro"
+        class="block w-full text-center px-4 py-3 mt-4 rounded-md font-bold text-white bg-indigo-600 hover:bg-indigo-700"
+      >
+        开始学习
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>
