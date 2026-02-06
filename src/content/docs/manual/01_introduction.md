@@ -128,4 +128,4 @@ moltbot message send --message "Hello, Moltbot! 介绍一下你自己。"
 
 ---
 
-**下一步**：在[第二章](/manual/02_configuration.md)中，我们将深入了解如何配置 Moltbot 的大脑，以及如何通过配置文件微调它的行为。
+**下一步**：在[第二章](/manual/02_configuration)中，我们将深入了解如何配置 Moltbot 的大脑，以及如何通过配置文件微调它的行为。

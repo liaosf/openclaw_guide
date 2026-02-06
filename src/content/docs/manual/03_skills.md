@@ -118,4 +118,4 @@ hooks: {
 **场景实战**：
 你可以结合 **IFTTT** 监控 Gmail 邮件，收到老板邮件后调用 Webhook，让 Moltbot 总结邮件内容并推送到你的 Telegram。
 
-**下一步**：在[第四章](/manual/04_deployment.md)中，我们将探讨如何将 Moltbot 部署在服务器上，并通过 Tailscale 实现远程访问。
+**下一步**：在[第四章](/manual/04_deployment)中，我们将探讨如何将 Moltbot 部署在服务器上，并通过 Tailscale 实现远程访问。

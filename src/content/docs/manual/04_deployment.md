@@ -100,4 +100,4 @@ moltbot node run \
 
 ---
 
-**下一步**：在最后的[第五章](/manual/05_reference.md)中，我们将列出常用的 CLI 命令速查表和常见问题解答。
+**下一步**：在最后的[第五章](/manual/05_reference)中，我们将列出常用的 CLI 命令速查表和常见问题解答。
