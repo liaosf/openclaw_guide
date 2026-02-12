@@ -1,22 +1,22 @@
 ---
-title: 第六章：高阶玩法与深度集成 (Master Class)
-description: 第六章：高阶玩法与深度集成 (Master Class)
+title: 第五章：高阶玩法与深度集成 (Master Class)
+description: 第五章：高阶玩法与深度集成 (Master Class)
 ---
 
-恭喜你到达这里！本章将介绍 Moltbot 最硬核的功能。掌握这些，你不仅是用户，更是 Moltbot 的架构师。
+恭喜你已经了解了 OpenClaw 的基础功能和部署方法！本章将介绍 OpenClaw 最硬核的功能。掌握这些，你不仅是用户，更是 OpenClaw 的架构师。
 
 ## 1. Lobster: 确定性工作流引擎
 
-LLM 有时会“幻觉”或不按步骤行事。为了解决这个问题，Moltbot 引入了 **Lobster** —— 一个内置的工作流运行时。
+LLM 有时会“幻觉”或不按步骤行事。为了解决这个问题，OpenClaw 引入了 **Lobster** —— 一个内置的工作流运行时。
 
-它允许你定义**“先做A，再做B，如果满足C，则等待用户批准后做D”**这样的严格逻辑。
+它允许你定义<strong>"先做A，再做B，如果满足C，则等待用户批准后做D"</strong>这样的严格逻辑。
 
 ### 1.1 启用 Lobster
 
 Lobster 是一个可选插件工具：
 
 ```json5
-// moltbot.json
+// openclaw.json
 tools: {
   alsoAllow: ["lobster"]
 }
@@ -41,14 +41,14 @@ steps:
     approval: required # 关键：这里会暂停，等待你点击“批准”
 
   - id: send_whatsapp
-    command: moltbot message send --to +8613800000000 --stdin $summarize.stdout
+    command: openclaw message send --to +8613800000000 --stdin $summarize.stdout
     condition: $approve_send.approved
 ```
 
 ### 1.3 运行
 
 ```bash
-moltbot tools call lobster --params '{"action":"run", "pipeline":"/path/to/daily-brief.lobster"}'
+openclaw tools call lobster --params '{"action":"run", "pipeline":"/path/to/daily-brief.lobster"}'
 ```
 
 ## 2. Sub-agents: 子智能体并发
@@ -56,6 +56,10 @@ moltbot tools call lobster --params '{"action":"run", "pipeline":"/path/to/daily
 想让 Agent 一边帮你写代码，一边去查文档？**Sub-agents** 能让它“分身”。
 
 ### 2.1 什么是子智能体？
+
+子智能体是 OpenClaw 特有的功能，它允许你在一个主会话中，同时运行多个独立的智能体实例。每个子智能体都有自己的记忆和上下文，互不干扰。
+
+**主要特征**：
 
 *   **独立会话**：每个子智能体有独立的记忆，不污染主会话。
 *   **并发执行**：在后台运行，不阻塞你的主聊天窗口。
@@ -72,20 +76,28 @@ moltbot tools call lobster --params '{"action":"run", "pipeline":"/path/to/daily
 /subagents stop <id>  # 停止某个任务
 ```
 
+### 2.3 示例场景
+
+**并行任务**：
+> "请同时帮我写一个 Next.js 14 的 Server Actions 示例，和一个 React 组件的 TypeScript 类型定义。"
+
+**分步骤处理**：
+> "请先帮我写一个简单的 React 组件，然后再写一个对应的 TypeScript 类型定义。"
+
 ## 3. Gmail Pub/Sub: 毫秒级邮件响应
 
 普通的 Webhook 是被动的，但结合 Google Cloud Pub/Sub，你可以实现**实时**邮件处理。
 
 ### 3.1 架构原理
 
-`Gmail (Google Cloud)` -> `Pub/Sub Push` -> `Tailscale Funnel (公网HTTPS)` -> `Moltbot Gateway`
+`Gmail (Google Cloud)` -> `Pub/Sub Push` -> `Tailscale Funnel (公网HTTPS)` -> `OpenClaw Gateway`
 
 ### 3.2 快速配置
 
-Moltbot 有专用的 Gmail 向导（需要安装 Google Cloud SDK）：
+OpenClaw 有专用的 Gmail 向导（需要安装 Google Cloud SDK）：
 
 ```bash
-moltbot webhooks gmail setup --account your-email@gmail.com
+openclaw webhooks gmail setup --account your-email@gmail.com
 ```
 
 它会自动：
@@ -99,7 +111,7 @@ moltbot webhooks gmail setup --account your-email@gmail.com
 
 如果现有的 Skill 不满足需求，你可以用 Node.js 写一个。
 
-**目录结构**: `~/.clawdbot/skills/my-super-skill/`
+**目录结构**: `~/.openclaw/skills/my-super-skill/`
 
 **SKILL.md** (元数据):
 ```markdown
@@ -107,14 +119,14 @@ moltbot webhooks gmail setup --account your-email@gmail.com
 name: my-super-skill
 description: A custom skill that does magic
 metadata:
-  moltbot:
+  openclaw:
     requires:
       bins: ["python3"] # 依赖检查
 ---
 ```
 
 **index.js** (核心逻辑):
-你可以直接写一个标准的 MCP Server，或者简单的脚本。Moltbot 会自动识别并加载它。
+你可以直接写一个标准的 MCP Server，或者简单的脚本。OpenClaw 会自动识别并加载它。
 
 ---
 
@@ -134,4 +146,4 @@ metadata:
 ---
 
 **终章寄语**：
-Moltbot 是一个有生命的开源项目。你现在的配置，就是一个独一无二的 AI 伙伴。去探索，去创造，去赋予它更多能力吧！
+OpenClaw 是一个有生命的开源项目。你现在的配置，就是一个独一无二的 AI 伙伴。去探索，去创造，去赋予它更多能力吧！

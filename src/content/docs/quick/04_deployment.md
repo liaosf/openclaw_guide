@@ -3,7 +3,7 @@ title: 第四章：高级部署与架构 (Deployment & Architecture)
 description: 第四章：高级部署与架构 (Deployment & Architecture)
 ---
 
-在前面的章节中，我们都是在本地笔记本上运行 Moltbot。但如果你希望它 24 小时待命，响应 Webhook 或执行定时任务，你需要将它部署在服务器上。
+在前面的章节中，我们都是在本地笔记本上运行 OpenClaw。但如果你希望它 24 小时待命，响应 Webhook 或执行定时任务，你需要将它部署在服务器上。
 
 本章将介绍如何搭建一套“云端大脑 + 本地手脚”的高级架构。
 
@@ -24,7 +24,7 @@ description: 第四章：高级部署与架构 (Deployment & Architecture)
 假设你拥有一台 Ubuntu/Debian 服务器。
 
 ### 2.1 环境准备
-Moltbot 需要 Node.js环境。
+OpenClaw 需要 Node.js环境。
 
 ```bash
 # 1. 安装 Node.js (推荐 v20+)
@@ -43,14 +43,14 @@ sudo loginctl enable-linger $USER
 
 ```bash
 # 全局安装
-pnpm install -g moltbot
+pnpm install -g openclaw
 
 # 初始化配置
-moltbot setup
+openclaw setup
 
 # 启动 Gateway (使用 PM2 守护进程)
 npm install -g pm2
-pm2 start moltbot -- gateway
+pm2 start openclaw -- gateway
 pm2 save
 ```
 
@@ -60,14 +60,14 @@ pm2 save
 
 ### 3.1配置 Tailscale Serve
 
-在服务器上安装并登录 Tailscale 后，让 Moltbot 自动配置 Serve：
+在服务器上安装并登录 Tailscale 后，让 OpenClaw 自动配置 Serve：
 
 ```bash
 # 让 Gateway 在 Tailnet 内暴露仪表盘
-moltbot gateway --tailscale serve
+openclaw gateway --tailscale serve
 ```
 
-或者修改 `moltbot.json`:
+或者修改 `openclaw.json`:
 
 ```json5
 gateway: {
@@ -91,7 +91,7 @@ gateway: {
 2.  **启动 Node 模式**并指向服务器：
 
 ```bash
-moltbot node run \
+openclaw node run \
   --gateway ws://myserver.tailnet.ts.net:18789 \
   --token "your-gateway-token"
 ```
@@ -100,4 +100,4 @@ moltbot node run \
 
 ---
 
-**下一步**：在最后的[第五章](/manual/05_reference)中，我们将列出常用的 CLI 命令速查表和常见问题解答。
+**下一步**：接下来，我们将列出常用的 CLI 命令速查表和常见问题解答。

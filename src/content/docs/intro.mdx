@@ -1,13 +1,75 @@
 ---
-title: 欢迎来到 OpenClaw guide
-description: 你的 AI 助手进阶指南
+title: OpenClaw 简要介绍
+description: OpenClaw 简要介绍
 ---
 
-欢迎来到 OpenClaw 101！这是一个开源的 AI 助理平台构建指南。
+欢迎来到 OpenClaw 指导站！
+
+这里是 OpenClaw AI 助理平台构建指导。聚合了精选教程，带你从零开始玩转 OpenClaw。
+
+## 🧬 一、OpenClaw 的来源与演变
+
+OpenClaw 是一个开源的、运行在你本地设备上的 **个人 AI 代理 (Personal AI Agent)**，核心目标是让 AI 不只是“聊天”，而是真正在你的电脑或服务器上自动执行任务，例如整理邮件、管理日程、控制浏览器、执行命令等。
+
+它由奥地利软件工程师 Peter Steinberger 开发，并于 2025 年 11 月 初次发布。
+
+📜 名字的演变（前世今生）
+
+Clawdbot – 最初发布时的名字。灵感部分来自 Anthropic 的 Claude，同时有“爪子（claw）”的形象。
+
+Moltbot – 在 2026 年 1 月，由于与 Anthropic 商标“Claude”容易混淆，项目更名为 Moltbot（参考龙虾蜕壳 molt 的意象）。
+
+OpenClaw – 几天后确定最终名字：突出“Open”（开源自由）与“Claw”（保留龙虾主题）两个核心含义。这个名字更容易传播且避免了法律风险。
+
+**So，Clawdbot，Moltbot，OpenClaw，是他，是他，还是他。🦞**
+
+**本教程基于 OpenClaw 的版本展开！**
+
+🔎 名字寓意：
+
+Open：开放、开源，对社区开放；
+
+Claw：保留早期龙虾（lobster）主题与 mascot 遗产。
+
+## 🎨 二、Logo 与象征寓意
+
+官方项目 logo（通常以简洁的文字或图形结合出现）围绕“OpenClaw”文字和 lobster（龙虾/爪）主题。在媒体报道中多以龙虾图形或带龙虾意象的图标出现，代表“具备抓取/执行能力的开源 AI”。
+
+象征意义：
+
+形似螯或爪子的设计比喻“抓取行动”（抓取任务/自动执行）；
+
+龙虾与“molting”（蜕变）呼应项目的成长、更名与发展。
+
+## 📍 三、Openclaw 源码仓库
+
+**主代码库 URL：**
+
+> https://github.com/openclaw/openclaw
+
+此外你可以浏览整个组织的多个相关仓库与生态组件：
+
+> https://github.com/openclaw
+
+这些仓库包括：
+
+- openclaw/openclaw — 核心代理代码
+- openclaw/clawhub — 技能目录与生态扩展
+- 其他如 workflow、ansible、工具等模块
+
+全部项目都是 MIT 许可开源，可自由使用、审阅和贡献。
+
+## 🌐 四、官网与社区资源
+
+🏠 官方网站
+
+🔗 https://openclaw.ai/
+
+官网页面可以查看项目进展，使用案例，用户评价等信息。
+
+本站点提供系统的安装、使用配置教程和资源。
 
 ## 核心板块
-
-这里聚合了精选教程，带你从零玩转 OpenClaw。
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
@@ -15,9 +77,3 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 	<Card title="手把手教程" icon="pencil">包含从安装到上线的所有细节。</Card>
 	<Card title="资源聚合" icon="add-document">收集了全网最优质的配置方案。</Card>
 </CardGrid>
-
-## 下一步
-
-准备好开始了吗？请点击下方链接开始第一天的学习：
-
-[Day 1: 环境搭建](/manual/01_introduction)

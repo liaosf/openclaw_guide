@@ -51,7 +51,7 @@ openclaw-guide/
 
 建议使用文件夹来组织相关的内容模块：
 
-- `src/content/docs/guides/` - 用于存放教程、向导类文章。
+- `src/content/docs/manual/` - 用于存放教程手册文章。
 - `src/content/docs/skills/` - 用于存放技能介绍、工具类文章。
 - `src/content/docs/resources/` - 用于存放资源列表。
 

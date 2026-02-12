@@ -3,15 +3,15 @@ title: 第二章：核心配置与个性化
 description: 第二章：核心配置与个性化
 ---
 
-安装完成后，你可能希望让 Moltbot 更符合你的使用习惯，比如给它起个名字、换个头像，或者限制只有你自己能跟它说话。本章将深入解析 Moltbot 的配置系统。
+安装完成后，你可能希望让 OpenClaw 更符合你的使用习惯，比如给它起个名字、换个头像，或者限制只有你自己能跟它说话。本章将深入解析 OpenClaw 的配置系统。
 
 ## 1. 配置文件概览
 
-Moltbot 的所有配置都存储在用户目录下的一个 JSON5 文件中：
+OpenClaw 的所有配置都存储在用户目录下的一个 JSON 或 JSON5 格式中：
 
-**位置**：`~/.clawdbot/moltbot.json`
+**位置**：`~/.openclaw/openclaw.json`
 
-> **提示**：JSON5 格式支持注释 (`//`) 和尾部逗号，比标准 JSON 更人性化。
+> **提示**：JSON5 格式支持注释 (`//`) 和尾部逗号，比标准 JSON 更人性化，但是否支持注释取决于版本和解析器实现。
 
 ### 1.1 基础结构
 
@@ -22,7 +22,7 @@ Moltbot 的所有配置都存储在用户目录下的一个 JSON5 文件中：
   // 1. Agent 设定：定义智能体的行为、工作区和身份
   agents: {
     defaults: {
-      workspace: "~/clawd", // 记忆存储位置
+      workspace: "~/.openclaw/workspace", // 记忆存储位置
       model: "anthropic/claude-3-5-sonnet-latest" // 默认模型
     },
     list: [
@@ -78,7 +78,7 @@ identity: {
 
 ### 2.2 塑造灵魂 (Bootstrap Files)
 
-Moltbot 启动时会读取工作区 (`~/clawd`) 下的特制 Markdown 文件来注入人设。你可以直接编辑这些文件：
+OpenClaw 启动时会读取工作区 (`~/.openclaw/workspace`) 下的特制 Markdown 文件来注入人设。你可以直接编辑这些文件：
 
 *   **`SOUL.md`**: 定义性格、说话语气、价值观。（例如：“你是一个说话风趣的程序员...”）
 *   **`AGENTS.md`**: 定义核心指令和长期记忆。
@@ -86,11 +86,11 @@ Moltbot 启动时会读取工作区 (`~/clawd`) 下的特制 Markdown 文件来�
 
 ## 3. 安全与权限 (Auth & Security)
 
-既然 Moltbot 运行在你本地，安全至关重要。
+既然 OpenClaw 运行在你本地，安全至关重要。
 
 ### 3.1 限制聊天对象 (Allowlist)
 
-默认情况下，Moltbot 可能会对未知来源的私聊 (DM) 发起配对 (Pairing) 请求。为了安全，建议开启白名单模式：
+默认情况下，OpenClaw 可能会对未知来源的私聊 (DM) 发起配对 (Pairing) 请求。为了安全，建议开启白名单模式：
 
 ```json5
 channels: {
@@ -107,7 +107,7 @@ channels: {
 
 ### 3.2 群聊策略 (Group Chat)
 
-想把 Moltbot 拉进群里？
+想把 OpenClaw 拉进群里？
 
 *   **Mention (默认)**: 只有 @它 或者提到它的名字（在 `mentionPatterns` 定义）时它才会回复。
 *   **Self-Chat (自聊模式)**: 如果你把自己加到 `allowFrom`，你在群里发的消息它也会看（像你的嘴替）。
@@ -127,7 +127,7 @@ agents: {
 
 ## 4. 多 Agent 路由 (Advanced)
 
-Moltbot 支持在一个网关内运行多个“人格”。
+OpenClaw 支持在一个网关内运行多个“人格”。
 
 例如，你可以创建一个 "Work Bot" (工作用，严肃) 和一个 "Life Bot" (生活用，活泼)。
 
@@ -147,4 +147,4 @@ bindings: [
 
 ---
 
-**下一步**：配置好了大脑和身体，接下来我们要给它安装“机械臂”。在[第三章](/manual/03_skills)中，我们将学习如何使用 Skills 让 Moltbot 具备联网搜索、操作文件等超能力。
+**下一步**：配置好了大脑和身体，接下来我们要给它安装“机械臂”。接下来，我们将学习如何使用 Skills 让 OpenClaw 具备联网搜索、操作文件等超能力。
